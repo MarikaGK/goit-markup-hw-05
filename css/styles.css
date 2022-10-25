@@ -63,28 +63,6 @@ ul {
   justify-content: space-between;
 }
 
-.header-right-side {
-  display: flex;
-  align-items: center;
-}
-
-.footer-style {
-  background-color: var(--bckgr-dark-color);
-}
-
-.footer-style-items {
-  display: flex;
-  flex-flow: column;
-}
-
-.footer-style-items:first-child {
-  padding-top: 50px;
-}
-
-.footer-style-items:last-child {
-  padding-bottom: 60px;
-}
-
 .logo {
   font-family: "Raleway", sans-serif;
   font-weight: 700;
@@ -119,12 +97,31 @@ ul {
   font-weight: 500;
   font-size: 14px;
   color: var(--bold-color);
-  padding-right: 45px;
+  margin-right: 45px;
+  position: relative;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .nav-list-link:hover,
 .nav-list-link:focus {
   color: var(--highlight);
+}
+
+.active-link {
+  color: var(--highlight);
+}
+
+.active-link::after {
+  content: " ";
+  width: 100%;
+  height: 4px;
+  background-color: var(--highlight);
+  border-radius: 2px;
+  position: absolute;
+  left: 0;
+  top: 46px;
 }
 
 .contact-list-header {
@@ -153,6 +150,9 @@ ul {
   display: flex;
   justify-content: right;
   align-items: center;
+  transition-property: color, --color2;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-list-header-link:hover,
@@ -164,6 +164,18 @@ ul {
 /* == ==== End of Header ==== == */
 
 /* == ==== Footer ==== == */
+
+.footer-style {
+  background-color: var(--bckgr-dark-color);
+}
+
+.footer-style-items:first-child {
+  padding-top: 50px;
+}
+
+.footer-style-items:last-child {
+  padding-bottom: 60px;
+}
 
 .footer-style-items {
   display: flex;
@@ -187,6 +199,9 @@ ul {
   line-height: 1.875;
   list-style-position: inside;
   padding: 0;
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .contact-list-footer-link:hover,
@@ -242,6 +257,9 @@ ul {
   width: 44px;
   height: 44px;
   --color4: var(--bright);
+  transition-property: background-color, --color4;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-social-link:hover,
@@ -433,6 +451,10 @@ ul {
   height: 44px;
   align-items: center;
   justify-content: center;
+  will-change: background-color, var(--color4);
+  transition-property: background-color, --color4;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .team-list-social-icon {
@@ -471,6 +493,10 @@ ul {
   padding: 17.71px 32px 13.25px;
   border-radius: 4px;
   border: 1px solid var(--color4);
+  will-change: border, --color4;
+  transition-property: border, --color4;
+  transition-duration: 2520ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .ourclients-logo {
@@ -480,7 +506,7 @@ ul {
 .ourclients-link:hover,
 .ourclients-link:focus {
   border: 1px solid var(--color1);
-  --color4: var(--color1);
+  --color4: var(--highlight);
 }
 
 /* == ==== End of Our clients ==== == */
