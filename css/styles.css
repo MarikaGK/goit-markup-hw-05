@@ -151,7 +151,7 @@ ul {
   display: flex;
   justify-content: right;
   align-items: center;
-  transition-property: color, --color2;
+  transition-property: color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -258,7 +258,7 @@ ul {
   width: 44px;
   height: 44px;
   --color4: var(--bright);
-  transition-property: background-color, --color4;
+  transition-property: background-color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -266,7 +266,6 @@ ul {
 .footer-social-link:hover,
 .footer-social-link:focus {
   background-color: var(--color1);
-  --color4: var(--bright);
 }
 
 /* == ==== End of Footer ==== == */
@@ -312,6 +311,45 @@ ul {
   border: 0;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
+  cursor: pointer;
+}
+
+.backdrop {
+  position: fixed;
+  display: flex;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 2;
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-hidden {
+  transform: scale(0);
+  visibility: 0;
+  opacity: 0;
+}
+
+.modal-content {
+  position: relative;
+  width: 520px;
+  height: 520px;
+  margin: auto;
+  background-color: var(--bright);
+}
+
+.modal-button {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 3%;
+  right: 3%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
   cursor: pointer;
 }
 
@@ -381,6 +419,27 @@ ul {
 
 .skills-list-item {
   width: 370px;
+  position: relative;
+}
+
+.skills-list-item img {
+  display: block;
+}
+
+.skills-list-description {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: rgba(47, 48, 58, 0.8);
+  color: var(--bright);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: Roboto;
+  position: absolute;
+  bottom: 0;
 }
 
 /* == ==== End of our skills ==== == */
@@ -447,13 +506,14 @@ ul {
 .team-list-social-link {
   display: inline-flex;
   background-color: var(--bright);
+  color: var(--color4);
   border-radius: 50%;
   width: 44px;
   height: 44px;
   align-items: center;
   justify-content: center;
-  will-change: background-color, var(--color4);
-  transition-property: background-color, --color4;
+  will-change: background-color, color;
+  transition-property: background-color, color;
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -465,7 +525,8 @@ ul {
 .team-list-social-link:hover,
 .team-list-social-link:focus {
   background-color: var(--color1);
-  --color4: var(--bright);
+  color: var(--bright);
+  --color4: currentColor;
 }
 
 /* == ==== EEnd of Our team ==== == */
@@ -493,10 +554,11 @@ ul {
   width: 170px;
   padding: 17.71px 32px 13.25px;
   border-radius: 4px;
+  color: var(--color4);
   border: 1px solid var(--color4);
-  will-change: border, --color4;
-  transition-property: border, --color4;
-  transition-duration: 2520ms;
+  will-change: border, color;
+  transition-property: border, color;
+  transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -507,7 +569,8 @@ ul {
 .ourclients-link:hover,
 .ourclients-link:focus {
   border: 1px solid var(--color1);
-  --color4: var(--highlight);
+  color: var(--color1);
+  --color4: currentColor;
 }
 
 /* == ==== End of Our clients ==== == */
@@ -585,12 +648,24 @@ ul {
 }
 
 .result-card-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   margin: 0;
   padding: 0;
   text-align: left;
+}
+
+.result-card-img {
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card-img img {
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .result-card-description {
@@ -615,10 +690,27 @@ ul {
 }
 
 .result-card-onlay {
+  position: absolute;
   background-color: var(--hover-onlay);
   width: 100%;
-  height: 100%;
-  z-index: 5;
+  height: 294px;
+  transform: translateY(100%);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.result-card-item:hover .result-card-onlay {
+  transform: translateY(0);
+}
+
+.result-card-onlay-description {
+  color: var(--bright);
+  font-family: roboto;
+  font-size: 18px;
+  line-height: 1.56;
+  letter-spacing: 0.03em;
+  padding: 49px 35px;
 }
 
 /* == ==== End of Portfolio Main ==== == */
